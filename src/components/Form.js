@@ -29,18 +29,16 @@ function Form() {
 
                 <label htmlFor='age'>Age</label>
                 <input type='number' name='age' min='18' max='99' onChange={formik.handleChange} value={formik.values.age}/>
-                <br></br>
 
-                <div class='sexGroup'>
+                <div>
 
                 <label class="inline">Male</label>
-                <input id="male" type="radio" name="male" onChange={formik.handleChange} value={formik.values.male}/>
+                <input type="radio" name="male" onChange={formik.handleChange} value={formik.values.male}/>
                 
                 <label class="inline">Female</label>
-                <input id="female" type="radio" name="female" onChange={formik.handleChange} value={formik.values.female}/>
+                <input type="radio" name="female" onChange={formik.handleChange} value={formik.values.female}/>
 
                 </div>
-                <br></br>
 
                 <div class='homeAnimals'>
                 <label htmlFor="homeAnimals">Home animals:</label>
