@@ -11,36 +11,40 @@ function Form() {
             male: '',
             female: '',
             homeAnimals: '',
-            eyeColor: '',
-            buttons: ''
+            eyeColor: ''
+        },
+        onSubmit: values => {
+            console.log('Form data', values);
         }
     });
 
-    console.log ('Form values', formik.values);
+    // console.log ('Form values', formik.values);
 
     return (
         <div>
-            <form>
+            <form onSubmit={formik.handleSubmit}>
             
                 <label htmlFor='name'>Name</label>
-                <input type='text' id='name' name='name' onChange={formik.handleChange} value={formik.values.name} />
+                <input type='text' name='name' onChange={formik.handleChange} value={formik.values.name} />
 
                 <label htmlFor='age'>Age</label>
-                <input type='range' id='age' name='age' min="18" max="99" onChange={formik.handleChange} value={formik.values.age}/>
+                <input type='number' name='age' min='18' max='99' onChange={formik.handleChange} value={formik.values.age}/>
                 <br></br>
 
-                <div class="sexGroup">
-                <input id="male" type="radio" name="male" onChange={formik.handleChange} value={formik.values.male} />
+                <div class='sexGroup'>
+
                 <label class="inline">Male</label>
+                <input id="male" type="radio" name="male" onChange={formik.handleChange} value={formik.values.male}/>
                 
-                <input id="female"type="radio" name="female" onChange={formik.handleChange} value={formik.values.female}/>
                 <label class="inline">Female</label>
+                <input id="female" type="radio" name="female" onChange={formik.handleChange} value={formik.values.female}/>
+
                 </div>
                 <br></br>
 
                 <div class='homeAnimals'>
-                <label htmlFor="home-animals">Home animals:</label>
-                <select id="home-animals" name='homeAnimals' onChange={formik.handleChange} value={formik.values.homeAnimals}>
+                <label htmlFor="homeAnimals">Home animals:</label>
+                <select name='homeAnimals' onChange={formik.handleChange} value={formik.values.homeAnimals}>
                     <option value="dog">Dog</option>
                     <option value="cat">Cat</option>
                     <option value="birds">Birds</option>
@@ -49,8 +53,8 @@ function Form() {
                 </div>
                 <br></br>
 
-                <label htmlFor="eye-color">Eye color:</label>
-                <select id="eye-color" name="eyeColor">
+                <label htmlFor="eyeColor">Eye color:</label>
+                <select name="eyeColor" onChange={formik.handleChange} value={formik.values.eyeColor}>
                     <option value="brown">Brown</option>
                     <option value="green">Green</option>
                     <option value="blue">Blue</option>
@@ -58,15 +62,13 @@ function Form() {
                 <br></br>
 
                 <div class='buttons' name='buttons'>
-                <br></br><button type="submit">Submit</button>
-                <br></br><button type="reset">Clear</button>
+                <button type="submit">Submit</button><br></br>
+                <button type="reset">Clear</button>
                 </div>
 
             </form>
         </div>
     )
-//     const jsonString = JSON.stringify();
-//     console.log(jsonString);
-}
+    }
 
 export default Form;
