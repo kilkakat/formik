@@ -32,11 +32,12 @@ function Form() {
 
                 <div>
 
+                <label>Sex:</label><br/>
                 <label class="inline">Male</label>
-                <input type="radio" name="male" onChange={formik.handleChange} value={formik.values.male}/>
+                <input type="radio" name="sex" onChange={formik.handleChange} value={formik.values.male}/>
                 
                 <label class="inline">Female</label>
-                <input type="radio" name="female" onChange={formik.handleChange} value={formik.values.female}/>
+                <input type="radio" name="sex" onChange={formik.handleChange} value={formik.values.female}/>
 
                 </div>
 
@@ -59,9 +60,9 @@ function Form() {
                 </select>
                 <br></br>
 
-                <div class='buttons' name='buttons'>
-                <button type="submit">Submit</button><br></br>
-                <button type="reset">Clear</button>
+                <div class='buttons'>
+                <button type="submit">Submit</button>
+                <button type="reset" value='Reset'>Clear</button>
                 </div>
 
             </form>

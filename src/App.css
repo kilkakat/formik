@@ -5,14 +5,13 @@
 label {
   font-weight: bold;
   display: block;
-  margin-bottom: 50px;
+  margin: 15px 20px 10px 20px;
 }
 
 input[type='text'] {
   width: 250px;
   padding: 6px 5px;
   font-size: 14px;
-  line-height: 2;
   color: #555;
   background-color: #fff;
   background-image: none;
@@ -21,17 +20,7 @@ input[type='text'] {
   margin-bottom: 20px; 
 }
 
-.input-group {
+.input-group, .homeAnimals, .buttons {
   margin-top: 1rem;
   padding: 1rem 1rem;
-}
-
-.homeAnimals {
-  margin-top: 1rem;
-  padding: 1rem 1rem;
-}
-
-.buttons {
-  margin-top: 1rem;
-  padding: 6px 5px;
 }
