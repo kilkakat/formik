@@ -32,6 +32,7 @@ function Form() {
           autoComplete='on'
           onChange={formik.handleChange}
           value={formik.values.name}
+          required
         />
 
         <label htmlFor='age'>Age</label>
@@ -43,6 +44,7 @@ function Form() {
           max='99'
           onChange={formik.handleChange}
           value={formik.values.age}
+          required
         />
 
         <div>
@@ -55,6 +57,7 @@ function Form() {
             name="sex"
             onChange={formik.handleChange}
             value="male"
+            required
           />
 
           <label htmlFor='fem' className="inline">Female</label>
@@ -64,6 +67,7 @@ function Form() {
             name="sex"
             onChange={formik.handleChange}
             value="female"
+            required
           />
           </label>
         </div>
@@ -74,7 +78,8 @@ function Form() {
             id='homeAnimals'
             name='homeAnimals'
             onChange={formik.handleChange}
-            value={formik.values.homeAnimals}>
+            value={formik.values.homeAnimals}
+            required>
             <option value="choose">Choose Home Animal</option>
             <option value="dog">Dog</option>
             <option value="cat">Cat</option>
@@ -89,7 +94,8 @@ function Form() {
           id='eyeColor'
           name='eyeColor'
           onChange={formik.handleChange}
-          value={formik.values.eyeColor}>
+          value={formik.values.eyeColor}
+          required>
           <option value="choose">Choose Eye Color</option>
           <option value="brown">Brown</option>
           <option value="green">Green</option>
