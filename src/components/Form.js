@@ -74,7 +74,6 @@ function Form() {
 
         <div className='homeAnimals'>
           <label htmlFor='homeAnimals'>Home animals:</label>
-          {/* <input name='homeAnimals' placeholder="Choose Home Animal" /> */}
           <select
             id='homeAnimals'
             name='homeAnimals'
