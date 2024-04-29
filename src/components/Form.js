@@ -48,7 +48,7 @@ function Form() {
         />
 
         <div>
-          <label>Sex:
+          <label required>Sex:
           
           <label htmlFor='male' className="inline">Male</label>
           <input
@@ -74,13 +74,14 @@ function Form() {
 
         <div className='homeAnimals'>
           <label htmlFor='homeAnimals'>Home animals:</label>
+          {/* <input name='homeAnimals' placeholder="Choose Home Animal" /> */}
           <select
             id='homeAnimals'
             name='homeAnimals'
             onChange={formik.handleChange}
             value={formik.values.homeAnimals}
             required>
-            <option value="choose">Choose Home Animal</option>
+            <option placeholder="" />
             <option value="dog">Dog</option>
             <option value="cat">Cat</option>
             <option value="birds">Birds</option>
@@ -96,7 +97,7 @@ function Form() {
           onChange={formik.handleChange}
           value={formik.values.eyeColor}
           required>
-          <option value="choose">Choose Eye Color</option>
+          <option placeholder="" />
           <option value="brown">Brown</option>
           <option value="green">Green</option>
           <option value="blue">Blue</option>
