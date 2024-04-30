@@ -1,7 +1,21 @@
 import React from 'react'
 import { useFormik } from 'formik';
+import Button from '@mui/material/Button';
+import ButtonGroup from '@mui/material/ButtonGroup';
+import TextField from '@mui/material/TextField';
+// import Stack from '@mui/material/Stack';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 
 function Form() {
+
+  const [age, setAge] = React.useState('');
+
+  const handleChange = (event) => {
+    setAge(event.target.value);
+  };
 
   const formik = useFormik({
     initialValues: {
@@ -24,8 +38,8 @@ function Form() {
     <div>
       <form onSubmit={formik.handleSubmit}>
 
-        <label htmlFor='name'>Name</label>
-        <input
+        {/* <label htmlFor='name'>Name</label> */}
+        {/* <input
           type='text'
           id='name'
           name='name'
@@ -33,9 +47,19 @@ function Form() {
           onChange={formik.handleChange}
           value={formik.values.name}
           required
-        />
+        />  */}
 
-        <label htmlFor='age'>Age</label>
+        {/* <Stack spacing={2} direction="row"> */}
+          <TextField 
+          name="name"
+          id="standard-basic" 
+          label="Name" 
+          variant="standard"
+          required
+          />
+        {/* </Stack> */}
+
+        {/* <label htmlFor='age'>Age</label>
         <input
           type='number'
           name='age'
@@ -45,7 +69,24 @@ function Form() {
           onChange={formik.handleChange}
           value={formik.values.age}
           required
-        />
+        /> */}
+
+      <FormControl fullWidth>
+        <InputLabel id="demo-simple-select-label">Age</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          name="age"
+          value={age}
+          label="Age"
+          onChange={handleChange}
+          required
+        >
+          <MenuItem value={10}>Ten</MenuItem>
+          <MenuItem value={20}>Twenty</MenuItem>
+          <MenuItem value={30}>Thirty</MenuItem>
+        </Select>
+      </FormControl>
 
         <div>
           <label required>Sex:
@@ -104,8 +145,10 @@ function Form() {
         <br></br>
 
         <div className='buttons'>
-          <button type="submit">Submit</button>
-          <button type="reset" value='Reset' onClick={handleClear}>Clear</button>
+          <ButtonGroup variant="text" aria-label="Basic button group">
+            <Button type="submit">Submit</Button>
+            <Button type="reset" onClick={handleClear}>Clean</Button>
+          </ButtonGroup>
         </div>
 
       </form>
