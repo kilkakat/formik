@@ -6,8 +6,12 @@ import TextField from '@mui/material/TextField';
 // import Stack from '@mui/material/Stack';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
 
 function Form() {
 
@@ -71,6 +75,7 @@ function Form() {
           required
         /> */}
 
+      <div className='age'>
       <FormControl fullWidth>
         <InputLabel id="demo-simple-select-label">Age</InputLabel>
         <Select
@@ -87,9 +92,10 @@ function Form() {
           <MenuItem value={30}>Thirty</MenuItem>
         </Select>
       </FormControl>
+      </div>
 
         <div>
-          <label required>Sex:
+          {/* <label required>Sex:
           
           <label htmlFor='male' className="inline">Male</label>
           <input
@@ -110,11 +116,24 @@ function Form() {
             value="female"
             required
           />
-          </label>
+          </label> */}
+
+          <FormControl>
+            <FormLabel id="demo-radio-buttons-group-label">Gender</FormLabel>
+            <RadioGroup
+              aria-labelledby="demo-radio-buttons-group-label"
+              defaultValue="female"
+              name="radio-buttons-group"
+              required
+            >
+              <FormControlLabel value="female" control={<Radio />} label="Female" />
+              <FormControlLabel value="male" control={<Radio />} label="Male" />
+            </RadioGroup>
+          </FormControl>
         </div>
 
         <div className='homeAnimals'>
-          <label htmlFor='homeAnimals'>Home animals:</label>
+          {/* <label htmlFor='homeAnimals'>Home animals:</label>
           <select
             id='homeAnimals'
             name='homeAnimals'
@@ -126,11 +145,28 @@ function Form() {
             <option value="cat">Cat</option>
             <option value="birds">Birds</option>
             <option value="fish">Fish</option>
-          </select>
+          </select> */}
+          <FormControl fullWidth>
+            <InputLabel id="demo-simple-select-label">Home Animals</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={formik.values.homeAnimals}
+              name='homeAnimals'
+              label="homeAnimals"
+              onChange={handleChange}
+              required
+            >
+              <MenuItem placeholder=""/>
+              <MenuItem value="dog">Dog</MenuItem>
+              <MenuItem value="cat">Cat</MenuItem>
+              <MenuItem value="birds">Birds</MenuItem>
+            </Select>
+          </FormControl>
         </div>
         <br></br>
 
-        <label htmlFor='eyeColor'>Eye color:</label>
+        {/* <label htmlFor='eyeColor'>Eye color:</label>
         <select
           id='eyeColor'
           name='eyeColor'
@@ -141,7 +177,26 @@ function Form() {
           <option value="brown">Brown</option>
           <option value="green">Green</option>
           <option value="blue">Blue</option>
-        </select>
+        </select> */}
+        <div className='eyeColor'>
+        <FormControl fullWidth>
+            <InputLabel id="demo-simple-select-label">Eye Color</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={formik.values.eyeColor}
+              name='eyeColor'
+              label="eyeColor"
+              onChange={handleChange}
+              required
+            >
+              <MenuItem placeholder=""/>
+              <MenuItem value="brown">Brown</MenuItem>
+              <MenuItem value="green">Green</MenuItem>
+              <MenuItem value="blue">Blue</MenuItem>
+            </Select>
+          </FormControl>
+        </div>
         <br></br>
 
         <div className='buttons'>
