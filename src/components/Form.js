@@ -1,6 +1,6 @@
 import React from 'react'
 import { useFormik } from 'formik';
-import Button from '@mui/material/Button';
+import { Box, Button } from '@mui/material';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import TextField from '@mui/material/TextField';
 import InputLabel from '@mui/material/InputLabel';
@@ -132,8 +132,15 @@ function Form() {
           </FormControl>
         </div>
 
+      <Box
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+            justifyContent="center"
+            >
+
         <div className='homeAnimals'>
-          <FormControl sx={{ m: 3 }} fullWidth>
+          <FormControl fullWidth>
             <InputLabel id="demo-simple-select-label">Home Animals</InputLabel>
             <Select
               labelId="demo-simple-select-label"
@@ -153,7 +160,7 @@ function Form() {
         <br></br>
 
         <div className='eyeColor'>
-        <FormControl sx={{ m: 3 }} fullWidth>
+        <FormControl fullWidth>
             <InputLabel id="demo-simple-select-label">Eye Color</InputLabel>
             <Select
               labelId="demo-simple-select-label"
@@ -178,6 +185,7 @@ function Form() {
             <Button type="reset" onClick={handleClear}>Clean</Button>
           </ButtonGroup>
         </div>
+        </Box>
 
       </form>
     </div>
