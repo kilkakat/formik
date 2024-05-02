@@ -3,7 +3,6 @@ import { useFormik } from 'formik';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import TextField from '@mui/material/TextField';
-// import Stack from '@mui/material/Stack';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
@@ -12,6 +11,9 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
+import { styled } from '@mui/material/styles';
+import InputBase from '@mui/material/InputBase';
+
 
 function Form() {
 
@@ -21,11 +23,44 @@ function Form() {
     setAge(event.target.value);
   };
 
+  const BootstrapInput = styled(InputBase)(({ theme }) => ({
+    'label + &': {
+      marginTop: theme.spacing(3),
+    },
+    '& .MuiInputBase-input': {
+      borderRadius: 4,
+      position: 'relative',
+      backgroundColor: theme.palette.background.paper,
+      border: '1px solid #ced4da',
+      fontSize: 16,
+      padding: '10px 26px 10px 12px',
+      transition: theme.transitions.create(['border-color', 'box-shadow']),
+
+      fontFamily: [
+        '-apple-system',
+        'BlinkMacSystemFont',
+        '"Segoe UI"',
+        'Roboto',
+        '"Helvetica Neue"',
+        'Arial',
+        'sans-serif',
+        '"Apple Color Emoji"',
+        '"Segoe UI Emoji"',
+        '"Segoe UI Symbol"',
+      ].join(','),
+      '&:focus': {
+        borderRadius: 4,
+        borderColor: '#80bdff',
+        boxShadow: '0 0 0 0.2rem rgba(0,123,255,.25)',
+      },
+    },
+  }));
+
   const formik = useFormik({
     initialValues: {
       name: '',
       age: '',
-      sex: '',
+      gender: '',
       homeAnimals: '',
       eyeColor: ''
     },
@@ -42,111 +77,63 @@ function Form() {
     <div>
       <form onSubmit={formik.handleSubmit}>
 
-        {/* <label htmlFor='name'>Name</label> */}
-        {/* <input
-          type='text'
-          id='name'
-          name='name'
-          autoComplete='on'
-          onChange={formik.handleChange}
-          value={formik.values.name}
-          required
-        />  */}
-
-        {/* <Stack spacing={2} direction="row"> */}
-          <TextField 
+        <TextField 
           name="name"
           id="standard-basic" 
           label="Name" 
           variant="standard"
+          onChange={formik.handleChange}
+          value={formik.values.name}
           required
-          />
-        {/* </Stack> */}
+        />
 
-        {/* <label htmlFor='age'>Age</label>
-        <input
-          type='number'
-          name='age'
-          id='age'
-          min='18'
-          max='99'
+      <div className="age">
+      <FormControl variant="standard" sx={{ m: 3 }}>
+        <InputLabel htmlFor="age">Age</InputLabel>
+        <BootstrapInput 
+          id="age" 
+          type="number"
+          as={TextField}
+          inputProps={{ min: 18, max: 99 }}
+          autoComplete='off'
           onChange={formik.handleChange}
           value={formik.values.age}
-          required
-        /> */}
-
-      <div className='age'>
-      <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Age</InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          name="age"
-          value={age}
-          label="Age"
-          onChange={handleChange}
-          required
-        >
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
-        </Select>
+          required/>
       </FormControl>
       </div>
 
-        <div>
-          {/* <label required>Sex:
-          
-          <label htmlFor='male' className="inline">Male</label>
-          <input
-            type="radio"
-            id='male'
-            name="sex"
-            onChange={formik.handleChange}
-            value="male"
-            required
-          />
-
-          <label htmlFor='fem' className="inline">Female</label>
-          <input
-            type="radio"
-            id='fem'
-            name="sex"
-            onChange={formik.handleChange}
-            value="female"
-            required
-          />
-          </label> */}
-
-          <FormControl>
-            <FormLabel id="demo-radio-buttons-group-label">Gender</FormLabel>
+        <div className="gender">
+         <FormControl>
+            <FormLabel sx={{ m: 3 }} id="gender">Gender</FormLabel>
             <RadioGroup
-              aria-labelledby="demo-radio-buttons-group-label"
-              defaultValue="female"
-              name="radio-buttons-group"
-              required
+              aria-labelledby="gender"
+              name="gender"
             >
-              <FormControlLabel value="female" control={<Radio />} label="Female" />
-              <FormControlLabel value="male" control={<Radio />} label="Male" />
+
+              <FormControlLabel 
+              name="gender"
+              value="female" 
+              control={<Radio />} 
+              label="Female"
+              onChange={formik.handleChange} 
+              required
+              />
+
+              <FormControlLabel 
+              name="gender"
+              value="male" 
+              control={<Radio />} 
+              label="Male"
+              onChange={formik.handleChange} 
+              required
+              />
+
             </RadioGroup>
           </FormControl>
         </div>
 
         <div className='homeAnimals'>
-          {/* <label htmlFor='homeAnimals'>Home animals:</label>
-          <select
-            id='homeAnimals'
-            name='homeAnimals'
-            onChange={formik.handleChange}
-            value={formik.values.homeAnimals}
-            required>
-            <option placeholder="" />
-            <option value="dog">Dog</option>
-            <option value="cat">Cat</option>
-            <option value="birds">Birds</option>
-            <option value="fish">Fish</option>
-          </select> */}
-          <FormControl fullWidth>
+          <FormControl sx={{ m: 3 }} fullWidth>
             <InputLabel id="demo-simple-select-label">Home Animals</InputLabel>
             <Select
               labelId="demo-simple-select-label"
@@ -154,10 +141,9 @@ function Form() {
               value={formik.values.homeAnimals}
               name='homeAnimals'
               label="homeAnimals"
-              onChange={handleChange}
+              onChange={formik.handleChange}
               required
             >
-              <MenuItem placeholder=""/>
               <MenuItem value="dog">Dog</MenuItem>
               <MenuItem value="cat">Cat</MenuItem>
               <MenuItem value="birds">Birds</MenuItem>
@@ -166,20 +152,8 @@ function Form() {
         </div>
         <br></br>
 
-        {/* <label htmlFor='eyeColor'>Eye color:</label>
-        <select
-          id='eyeColor'
-          name='eyeColor'
-          onChange={formik.handleChange}
-          value={formik.values.eyeColor}
-          required>
-          <option placeholder="" />
-          <option value="brown">Brown</option>
-          <option value="green">Green</option>
-          <option value="blue">Blue</option>
-        </select> */}
         <div className='eyeColor'>
-        <FormControl fullWidth>
+        <FormControl sx={{ m: 3 }} fullWidth>
             <InputLabel id="demo-simple-select-label">Eye Color</InputLabel>
             <Select
               labelId="demo-simple-select-label"
@@ -187,10 +161,9 @@ function Form() {
               value={formik.values.eyeColor}
               name='eyeColor'
               label="eyeColor"
-              onChange={handleChange}
+              onChange={formik.handleChange}
               required
             >
-              <MenuItem placeholder=""/>
               <MenuItem value="brown">Brown</MenuItem>
               <MenuItem value="green">Green</MenuItem>
               <MenuItem value="blue">Blue</MenuItem>
