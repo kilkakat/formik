@@ -17,12 +17,6 @@ import InputBase from '@mui/material/InputBase';
 
 function Form() {
 
-  const [age, setAge] = React.useState('');
-
-  const handleChange = (event) => {
-    setAge(event.target.value);
-  };
-
   const BootstrapInput = styled(InputBase)(({ theme }) => ({
     'label + &': {
       marginTop: theme.spacing(3),
@@ -74,7 +68,7 @@ function Form() {
   };
 
   return (
-    <div>
+    
       <form onSubmit={formik.handleSubmit}>
 
         <TextField 
@@ -82,6 +76,7 @@ function Form() {
           id="standard-basic" 
           label="Name" 
           variant="standard"
+          autoComplete='on'
           onChange={formik.handleChange}
           value={formik.values.name}
           required
@@ -95,7 +90,7 @@ function Form() {
           type="number"
           as={TextField}
           inputProps={{ min: 18, max: 99 }}
-          autoComplete='off'
+          autoComplete='on'
           onChange={formik.handleChange}
           value={formik.values.age}
           required/>
@@ -117,6 +112,7 @@ function Form() {
               label="Female"
               onChange={formik.handleChange} 
               required
+              enabled="true"
               />
 
               <FormControlLabel 
@@ -186,9 +182,7 @@ function Form() {
           </ButtonGroup>
         </div>
         </Box>
-
       </form>
-    </div>
   )
 }
 
